@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-import PrimeVue from 'primevue/config';
+import PrimeVue from "primevue/config";
 const app = createApp(App);
-app.use(PrimeVue);
-app.mount('#app')
+app.use(PrimeVue, { ripple: true });
+app.mount("#app");
