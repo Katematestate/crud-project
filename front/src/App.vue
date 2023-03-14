@@ -19,7 +19,7 @@ import Button from 'primevue/button';
     <div>
       <InputText type="text" placeholder="enter portfolio link" v-model="body_data.url" />
     </div>
-    <Button type="submit" @click="create_project">[ADD NEW PROJECT]</Button>
+    <Button label="Success" severity="success" raised type="submit" @click="create_project">Add New Project</Button>
   </form>
 
   <DataTable :value="project_list" tableStyle="min-width: 50rem" @row-click="fetch_single_project($event.data._id)">
@@ -38,9 +38,13 @@ import Button from 'primevue/button';
       </template>
     </Column>
   </DataTable>
-
 </template>
-<style scoped></style>
+<style scoped>
+.project_buttons{
+  display: flex;
+  gap: 16px;
+}
+</style>
 <script>
 export default {
   data() {
