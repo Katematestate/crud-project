@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const morgan = require("morgan");
 
 require("dotenv").config();
 
@@ -17,6 +18,7 @@ app.use(function (req, res, next) {
   );
   next();
 });
+app.use(morgan("combined"));
 //DATABASE
 // **** change this below DB link to your mongoDB cluster ****
 const DB = `mongodb+srv://KatiePragg:${process.env["MONGO_PASSWORD"]}@cluster0.ueuybnq.mongodb.net/crud-project?retryWrites=true&w=majority`; //insert your mongoDB link that emerges out of the process described in teams for step by step mongoDB creation. replace <password> part with password you have given to your main user at cluster creation
