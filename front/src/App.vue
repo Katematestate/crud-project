@@ -5,8 +5,10 @@ import Column from 'primevue/column';
 import Button from 'primevue/button';
 </script>
 <template>
-  <h1>{{ single_project.name }}</h1>
-  <form @submit="create_project" action="/">
+  <div class="project-text-display">
+    <h1>{{ single_project.name }}</h1>
+  </div>
+  <form class="input-display" @submit="create_project" action="/">
     <div>
       <InputText type="text" placeholder="project name" v-model="body_data.name" />
     </div>
@@ -19,7 +21,7 @@ import Button from 'primevue/button';
     <div>
       <InputText type="text" placeholder="enter portfolio link" v-model="body_data.url" />
     </div>
-    <Button label="Success" severity="success" raised type="submit" @click="create_project">Add New Project</Button>
+    <Button label="New Project" severity="success" raised type="submit" icon="pi pi-plus" @click="create_project"/>
   </form>
 
   <DataTable :value="project_list" tableStyle="min-width: 50rem" @row-click="fetch_single_project($event.data._id)">
@@ -33,16 +35,30 @@ import Button from 'primevue/button';
     <Column field="url" header="Portfolio Link"></Column>
     <Column>
       <template #body="slotProps">
-        <Button severity="danger" outlined icon="pi pi-trash" @click="delete_project(slotProps.data._id)" />
-        <Button severity="secondary" outlined icon="pi pi-sync" @click="update_project(slotProps.data._id)" />
+        <div class="action-buttons">
+          <Button severity="danger" outlined icon="pi pi-trash" @click="delete_project(slotProps.data._id)" />
+          <Button severity="secondary" outlined icon="pi pi-sync" @click="update_project(slotProps.data._id)" />
+        </div>
       </template>
     </Column>
   </DataTable>
 </template>
 <style scoped>
-.project_buttons{
+.project-text-display{
   display: flex;
+  justify-content: center;
+  font-size: 24px;
+  text-decoration: underline;
+}
+.input-display{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
   gap: 16px;
+}
+.action-buttons{
+  display: flex;
+  gap: 8px;
 }
 </style>
 <script>
